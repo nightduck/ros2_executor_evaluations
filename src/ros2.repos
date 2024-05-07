@@ -4,7 +4,11 @@
 # Example:
 ############
 repositories:
-  examples:
+  ros2/rclcpp:
     type: git
-    url: https://github.com/ros2/examples.git
-    version: rolling
+    url: https://github.com/nightduck/rclcpp.git
+    version: graph_executables
+  ros2/reference-system:
+    type: git
+    url: https://github.com/nightduck/reference-system.git
+    version: main
