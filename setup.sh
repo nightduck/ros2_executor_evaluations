@@ -25,7 +25,7 @@ sudo apt install -y \
   ros-rolling-mimick-vendor \
   ros-rolling-ros-testing
 
-pip3 install bokeh==2.4.3
+pip3 install bokeh==2.4.3 psrecord
 #sudo RTI_NC_LICENSE_ACCEPTED=yes apt-get install rti-connext-dds-6.0.1 -y
 rosdep update --rosdistro=$ROS_DISTRO
 rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO
