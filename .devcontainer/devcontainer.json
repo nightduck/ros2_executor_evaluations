@@ -41,7 +41,9 @@
 				"twxs.cmake",
 				"yzhang.markdown-all-in-one",
 				"zachflower.uncrustify",
-				"ms-iot.vscode-ros"
+				"ms-iot.vscode-ros",
+                                "donjayamanne.githistory",
+                                "ms-toolsai.jupyter"
 			]
 		}
 	}
