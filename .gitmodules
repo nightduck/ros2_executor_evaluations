@@ -6,3 +6,7 @@
 	path = src/ros2/reference-system
 	url = git@github.com:nightduck/reference-system.git
 	branch = main
+[submodule "src/ros2/ros2-end-to-end"]
+	path = src/ros2/ros2-end-to-end
+	url = git@github.com:HarunTeper/ros2-end-to-end.git
+	branch = main

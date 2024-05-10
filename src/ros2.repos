@@ -12,3 +12,7 @@ repositories:
     type: git
     url: git@github.com:nightduck/reference-system.git
     version: main
+  ros2/ros2-end-to-end:
+    type: git
+    url: git@github.com:HarunTeper/ros2-end-to-end.git
+    version: main
