@@ -1,12 +1,12 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-	"dockerFile": "Dockerfile",
+	"dockerFile": "Dockerfile.noble",
 	"build": {
 		"args": {
 			"WORKSPACE": "${containerWorkspaceFolder}"
 		}
 	},
-	"remoteUser": "ros",
+	"remoteUser": "ubuntu",
 	"runArgs": [
 		"--network=host",
 		"--cap-add=SYS_PTRACE",
@@ -42,8 +42,8 @@
 				"yzhang.markdown-all-in-one",
 				"zachflower.uncrustify",
 				"ms-iot.vscode-ros",
-                                "donjayamanne.githistory",
-                                "ms-toolsai.jupyter"
+        "donjayamanne.githistory",
+        "ms-toolsai.jupyter"
 			]
 		}
 	}

@@ -10,6 +10,10 @@ fi
 
 sudo apt install -y sysstat u-boot-tools
 
+# TODO: Install ROS2
+
+# TODO: Setup real-time kernel
+
 # Setup a constant CPU frequency
 echo -n "setup constant CPU frequency to 1.50 GHz ... "
 # disable ondemand governor

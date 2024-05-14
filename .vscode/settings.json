@@ -4,9 +4,14 @@
         100
     ],
     "files.associations": {
-        "*.repos": "yaml",
-        "*.world": "xml",
-        "*.xacro": "xml"
+      "*.rst": "restructuredtext",
+      "*.repos": "yaml",
+      "*.world": "xml",
+      "*.xacro": "xml",
+      "mutex": "cpp",
+      "shared_mutex": "cpp",
+      "*.tcc": "cpp",
+      "chrono": "cpp"
     },
     "python.analysis.extraPaths": [
         "/opt/ros/rolling/lib/python3.10/site-packages/"
