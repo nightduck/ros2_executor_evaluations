@@ -5,9 +5,11 @@ vcs import < src/ros2.repos src
 sudo apt-get update
 sudo apt install -y \
   ament-cmake \
+  babeltrace \
   libasio-dev \
   libacl1-dev \
   libfastcdr-dev \
+  less \
   python3-pip \
   python3-pytest-cov \
   python3-flake8-blind-except \
@@ -23,7 +25,10 @@ sudo apt install -y \
   ros-rolling-tracetools-trace \
   ros-rolling-performance-test-fixture \
   ros-rolling-mimick-vendor \
-  ros-rolling-ros-testing
+  ros-rolling-ros-testing \
+  ros-rolling-rmw-cyclonedds-cpp \
+  ros-rolling-ros2trace \
+  ros-rolling-tracetools-analysis
 
 pip3 install bokeh==2.4.3 psrecord
 #sudo RTI_NC_LICENSE_ACCEPTED=yes apt-get install rti-connext-dds-6.0.1 -y
