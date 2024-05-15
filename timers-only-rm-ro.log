@@ -1,0 +1,6 @@
+Using rate monotonic fixed priority executor in RO mode
+Dropped jobs: 
+FrontLidarDriver: 0 / 50
+FrontCamera: 0 / 124
+IMU: 0 / 499
+Total: 0 / 673
