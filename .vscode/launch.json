@@ -18,7 +18,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/install/lib/${input:package}/${input:program}",
-      "args": ["default"],
+      "args": ["15", "events", "ro"],
       "preLaunchTask": "build",
       "stopAtEntry": true,
       "cwd": "${workspaceFolder}",

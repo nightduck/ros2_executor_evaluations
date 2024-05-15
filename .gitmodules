@@ -10,11 +10,3 @@
 	path = src/ros2/ros2-end-to-end
 	url = git@github.com:HarunTeper/ros2-end-to-end.git
 	branch = main
-[submodule "src/ros2/tracetools_analysis"]
-	path = src/ros2/tracetools_analysis
-	url = https://github.com/ros-tracing/tracetools_analysis.git
-	branch = rolling
-[submodule "src/ros2/rcl"]
-	path = src/ros2/rcl
-	url = git@github.com:ros2/rcl.git
-	branch = rolling

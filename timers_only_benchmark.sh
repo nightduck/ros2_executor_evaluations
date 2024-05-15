@@ -11,20 +11,20 @@ ros2 trace start timers-only-rm-ro
 sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/lib/rtss_evaluation/timers_only $duration rm ro | tee timers-only-rm-ro.log
 ros2 trace stop timers-only-rm-ro
 
-# rm -r ~/.ros/tracing/timers-only-rm-re
-# ros2 trace start timers-only-rm-re
-# sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/lib/rtss_evaluation/timers_only $duration rm re | tee timers-only-rm-re.log
-# ros2 trace stop timers-only-rm-re
+rm -r ~/.ros/tracing/timers-only-rm-re
+ros2 trace start timers-only-rm-re
+sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/lib/rtss_evaluation/timers_only $duration rm re | tee timers-only-rm-re.log
+ros2 trace stop timers-only-rm-re
 
-# rm -r ~/.ros/tracing/timers-only-edf-ro
-# ros2 trace start timers-only-edf-ro
-# sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/lib/rtss_evaluation/timers_only $duration edf ro | tee timers-only-edf-ro.log
-# ros2 trace stop timers-only-edf-ro
+rm -r ~/.ros/tracing/timers-only-edf-ro
+ros2 trace start timers-only-edf-ro
+sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/lib/rtss_evaluation/timers_only $duration edf ro | tee timers-only-edf-ro.log
+ros2 trace stop timers-only-edf-ro
 
-# rm -r ~/.ros/tracing/timers-only-edf-re
-# ros2 trace start timers-only-edf-re
-# sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/lib/rtss_evaluation/timers_only $duration edf re | tee timers-only-edf-re.log
-# ros2 trace stop timers-only-edf-re
+rm -r ~/.ros/tracing/timers-only-edf-re
+ros2 trace start timers-only-edf-re
+sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/lib/rtss_evaluation/timers_only $duration edf re | tee timers-only-edf-re.log
+ros2 trace stop timers-only-edf-re
 
 rm -r ~/.ros/tracing/timers-only-events-ro
 ros2 trace start timers-only-events-ro
