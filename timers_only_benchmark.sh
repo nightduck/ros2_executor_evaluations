@@ -8,7 +8,7 @@ fi
 
 duration=5
 
-rm -r ~/.ros/tracing/trace-timers-only/*
+rm -r ~/.ros/tracing/trace-timers-only.*
 source /opt/ros/rolling/setup.bash
 source install/setup.bash
 
@@ -96,5 +96,5 @@ ros2 trace start -k sched_switch -l trace-timers-only.default.ou
 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration default | tee trace-timers-only.default.ou.log
 ros2 trace stop trace-timers-only.default.ou
 
-cp -r ~/.ros/tracing/trace-timers-only-* .
-chown -R $SUDO_USER:$SUDO_USER trace-timers-only-*
+cp -r ~/.ros/tracing/trace-timers-only.* .
+chown -R $SUDO_USER:$SUDO_USER trace-timers-only.*
