@@ -68,33 +68,33 @@ ros2 trace start trace-timers-only.default.hu
 chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration default | tee trace-timers-only.default.hu.log
 ros2 trace stop trace-timers-only.default.hu
 
-# ros2 trace start trace-timers-only.rm.ro.ou
-# chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration rm ro | tee trace-timers-only.rm.ro.ou.log
-# ros2 trace stop trace-timers-only.rm.ro.ou
+ros2 trace start trace-timers-only.rm.ro.ou
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration rm ro | tee trace-timers-only.rm.ro.ou.log
+ros2 trace stop trace-timers-only.rm.ro.ou
 
-# ros2 trace start trace-timers-only.rm.re.ou
-# chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration rm re | tee trace-timers-only.rm.re.ou.log
-# ros2 trace stop trace-timers-only.rm.re.ou
+ros2 trace start trace-timers-only.rm.re.ou
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration rm re | tee trace-timers-only.rm.re.ou.log
+ros2 trace stop trace-timers-only.rm.re.ou
 
-# ros2 trace start trace-timers-only.edf.ro.ou
-# chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration edf ro | tee trace-timers-only.edf.ro.ou.log
-# ros2 trace stop trace-timers-only.edf.ro.ou
+ros2 trace start trace-timers-only.edf.ro.ou
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration edf ro | tee trace-timers-only.edf.ro.ou.log
+ros2 trace stop trace-timers-only.edf.ro.ou
 
-# ros2 trace start trace-timers-only.edf.re.ou
-# chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration edf re | tee trace-timers-only.edf.re.ou.log
-# ros2 trace stop trace-timers-only.edf.re.ou
+ros2 trace start trace-timers-only.edf.re.ou
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration edf re | tee trace-timers-only.edf.re.ou.log
+ros2 trace stop trace-timers-only.edf.re.ou
 
-# ros2 trace start trace-timers-only.events.ro.ou
-# chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration events ro | tee trace-timers-only.events.ro.ou.log
-# ros2 trace stop trace-timers-only.events.ro.ou
+ros2 trace start trace-timers-only.events.ro.ou
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration events ro | tee trace-timers-only.events.ro.ou.log
+ros2 trace stop trace-timers-only.events.ro.ou
 
-# ros2 trace start trace-timers-only.events.re.ou
-# chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration events re | tee trace-timers-only.events.re.ou.log
-# ros2 trace stop trace-timers-only.events.re.ou
+ros2 trace start trace-timers-only.events.re.ou
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration events re | tee trace-timers-only.events.re.ou.log
+ros2 trace stop trace-timers-only.events.re.ou
 
-# ros2 trace start trace-timers-only.default.ou
-# chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration default | tee trace-timers-only.default.ou.log
-# ros2 trace stop trace-timers-only.default.ou
+ros2 trace start trace-timers-only.default.ou
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration default | tee trace-timers-only.default.ou.log
+ros2 trace stop trace-timers-only.default.ou
 
 cp -r ~/.ros/tracing/trace-timers-only.* .
 chown -R $SUDO_USER:$SUDO_USER trace-timers-only.*
