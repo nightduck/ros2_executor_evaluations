@@ -14,13 +14,5 @@ if [ $# -eq 1 ]; then
   fi
 fi
 
-colcon build \
-    --merge-install \
-    --symlink-install \
-    --packages-select autoware_reference_system \
-    --cmake-force-configure --cmake-args -DRUN_BENCHMARK=ON
-
-
-
 python3 $(ros2 pkg prefix --share autoware_reference_system)/scripts/benchmark.py \
      $duration 'autoware_*'
