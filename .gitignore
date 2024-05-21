@@ -3,6 +3,7 @@ install/*
 log/*
 site/*
 venv/
+.venv/
 
 timers-only-*
 data/

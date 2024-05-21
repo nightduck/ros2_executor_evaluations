@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default value for the benchmark duration
-duration=5
+duration=120
 
 # Check if a command line argument is provided
 if [ $# -eq 1 ]; then
@@ -14,5 +14,7 @@ if [ $# -eq 1 ]; then
   fi
 fi
 
-python3 $(ros2 pkg prefix --share autoware_reference_system)/scripts/benchmark.py \
-     $duration 'autoware_*'
+python3 $(ros2 pkg prefix --share autoware_reference_system)/scripts/benchmark.py $duration \
+        autoware_default_singlethreaded,autoware_default_staticsinglethreaded,autoware_default_events,autoware_default_fifo,autoware_default_rm
+
+cp ~/.ros/benchmark_autoware_reference_system/latest/executor_kpi_summary_report_${duration}s.md .
