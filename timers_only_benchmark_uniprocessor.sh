@@ -28,13 +28,13 @@ ros2 trace start trace-timers-only.edf.re.uu
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration edf re | tee trace-timers-only.edf.re.uu.log
 ros2 trace stop trace-timers-only.edf.re.uu
 
-ros2 trace start trace-timers-only.fifo.ro.uu
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration fifo ro | tee trace-timers-only.fifo.ro.uu.log
-ros2 trace stop trace-timers-only.fifo.ro.uu
+# ros2 trace start trace-timers-only.fifo.ro.uu
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration fifo ro | tee trace-timers-only.fifo.ro.uu.log
+# ros2 trace stop trace-timers-only.fifo.ro.uu
 
-ros2 trace start trace-timers-only.fifo.re.uu
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration fifo re | tee trace-timers-only.fifo.re.uu.log
-ros2 trace stop trace-timers-only.fifo.re.uu
+# ros2 trace start trace-timers-only.fifo.re.uu
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration fifo re | tee trace-timers-only.fifo.re.uu.log
+# ros2 trace stop trace-timers-only.fifo.re.uu
 
 ros2 trace start trace-timers-only.events.ro.uu
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration events ro | tee trace-timers-only.events.ro.uu.log
@@ -43,6 +43,10 @@ ros2 trace stop trace-timers-only.events.ro.uu
 ros2 trace start trace-timers-only.events.re.uu
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration events re | tee trace-timers-only.events.re.uu.log
 ros2 trace stop trace-timers-only.events.re.uu
+
+ros2 trace start trace-timers-only.static.uu
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration static | tee trace-timers-only.static.uu.log
+ros2 trace stop trace-timers-only.static.uu
 
 ros2 trace start trace-timers-only.default.uu
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration default | tee trace-timers-only.default.uu.log
@@ -64,13 +68,13 @@ ros2 trace start trace-timers-only.edf.re.hu
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration edf re | tee trace-timers-only.edf.re.hu.log
 ros2 trace stop trace-timers-only.edf.re.hu
 
-ros2 trace start trace-timers-only.fifo.ro.hu
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration fifo ro | tee trace-timers-only.fifo.ro.hu.log
-ros2 trace stop trace-timers-only.fifo.ro.hu
+# ros2 trace start trace-timers-only.fifo.ro.hu
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration fifo ro | tee trace-timers-only.fifo.ro.hu.log
+# ros2 trace stop trace-timers-only.fifo.ro.hu
 
-ros2 trace start trace-timers-only.fifo.re.hu
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration fifo re | tee trace-timers-only.fifo.re.hu.log
-ros2 trace stop trace-timers-only.fifo.re.hu
+# ros2 trace start trace-timers-only.fifo.re.hu
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration fifo re | tee trace-timers-only.fifo.re.hu.log
+# ros2 trace stop trace-timers-only.fifo.re.hu
 
 ros2 trace start trace-timers-only.events.ro.hu
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration events ro | tee trace-timers-only.events.ro.hu.log
@@ -79,6 +83,10 @@ ros2 trace stop trace-timers-only.events.ro.hu
 ros2 trace start trace-timers-only.events.re.hu
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration events re | tee trace-timers-only.events.re.hu.log
 ros2 trace stop trace-timers-only.events.re.hu
+
+ros2 trace start trace-timers-only.static.hu
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration static | tee trace-timers-only.static.hu.log
+ros2 trace stop trace-timers-only.static.hu
 
 ros2 trace start trace-timers-only.default.hu
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration default | tee trace-timers-only.default.hu.log
@@ -100,13 +108,13 @@ ros2 trace start trace-timers-only.edf.re.ou
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration edf re | tee trace-timers-only.edf.re.ou.log
 ros2 trace stop trace-timers-only.edf.re.ou
 
-ros2 trace start trace-timers-only.fifo.ro.ou
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration fifo ro | tee trace-timers-only.fifo.ro.ou.log
-ros2 trace stop trace-timers-only.fifo.ro.ou
+# ros2 trace start trace-timers-only.fifo.ro.ou
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration fifo ro | tee trace-timers-only.fifo.ro.ou.log
+# ros2 trace stop trace-timers-only.fifo.ro.ou
 
-ros2 trace start trace-timers-only.fifo.re.ou
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration fifo re | tee trace-timers-only.fifo.re.ou.log
-ros2 trace stop trace-timers-only.fifo.re.ou
+# ros2 trace start trace-timers-only.fifo.re.ou
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration fifo re | tee trace-timers-only.fifo.re.ou.log
+# ros2 trace stop trace-timers-only.fifo.re.ou
 
 ros2 trace start trace-timers-only.events.ro.ou
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration events ro | tee trace-timers-only.events.ro.ou.log
@@ -115,6 +123,10 @@ ros2 trace stop trace-timers-only.events.ro.ou
 ros2 trace start trace-timers-only.events.re.ou
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration events re | tee trace-timers-only.events.re.ou.log
 ros2 trace stop trace-timers-only.events.re.ou
+
+ros2 trace start trace-timers-only.static.ou
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration static | tee trace-timers-only.static.ou.log
+ros2 trace stop trace-timers-only.static.ou
 
 ros2 trace start trace-timers-only.default.ou
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration default | tee trace-timers-only.default.ou.log
