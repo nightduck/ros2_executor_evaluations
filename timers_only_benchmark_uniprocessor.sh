@@ -187,4 +187,5 @@ mkdir -p data/response_time.default.$OU/
 mv *.node.txt data/response_time.default.$OU/
 
 cp -r ~/.ros/tracing/trace-timers-only.* data/
+mv trace-timers-only.* data/
 chown -R $SUDO_USER:$SUDO_USER data/
