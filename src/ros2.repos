@@ -24,7 +24,7 @@ repositories:
   #   type: git
   #   url: https://github.com/ros-tracing/tracetools_analysis.git
   #   version: rolling
-  # ros2/rcl:
-  #   type: git
-  #   url: git@github.com:ros2/rcl.git
-  #   version: rolling
+  ros2/rcl:
+    type: git
+    url: git@github.com:ros2/rcl.git
+    version: rolling

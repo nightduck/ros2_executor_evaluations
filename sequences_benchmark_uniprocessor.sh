@@ -8,6 +8,10 @@ fi
 
 duration=5
 
+UU=60
+HU=80
+OU=90
+
 rm -r ~/.ros/tracing/trace-sequences.*
 source install/setup.bash
 
