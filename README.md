@@ -35,11 +35,18 @@ Configure your Pi with the following
     sudo su
     configure_pi.sh
 
-This will prompt you to reboot your Pi. Do so. After lauching, run
+This will prompt you to reboot your Pi. Do so.
 
-    ./build.sh
+On a more powerful machine, build the docker image for the Raspberry Pi. Then export it to the Pi
 
-This will take several minutes (because I was too lazy to setup a cross compilation script lol)
+    git clone --recursive git@github.com:nightduck/rtss2024_paper.git
+    docker buildx build -t rpi_image --platform linux/arm64 .
+    docker save -o rpi_image.tar rpi_image
+    scp rpi_image.tar pi@pi_hostname:.
+
+Back on the Pi, load this image. All experiments will be ran inside of this container
+
+    docker load -i path/to/rpi_image.tar
 
 # Experiments
 
@@ -59,10 +66,6 @@ In a second terminal, run
     sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./timers_only rm
 
 TODO: Modify above to run a script iterating through all CLI options, outputing contents to log file. Modify callback_duration.ipynb in tracetools analysis to take in the tracing log and this output file to generate all the diagrams.
-
-TODO: In ubuntu 24.04, cannot use pip for system wide installation. Have to create a venv, by
-installing python3.12-venv. Possibly use a separate setup script just for the jupyter notebook
-that sets this up. Also need ipykernel and pandas
 
 ## FAQ
 
