@@ -5,9 +5,7 @@
 ###########################################
 # Base image
 ###########################################
-FROM --platform=$BUILDPLATFORM ubuntu:24.04 AS base
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
+FROM arm64v8/ubuntu:24.04 AS base
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install language
@@ -91,7 +89,7 @@ ARG USER_GID=$USER_UID
 # RUN useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 # Add sudo support for the non-root user
 RUN apt-get update \
-  && apt-get install -y sudo \
+  && apt-get install -y  --no-install-recommends sudo \
   && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
   && chmod 0440 /etc/sudoers.d/$USERNAME \
   && rm -rf /var/lib/apt/lists/*
@@ -111,7 +109,7 @@ ENV AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS=1
 FROM dev
 
 RUN apt-get update \
-  && apt install -y \
+  && apt install -y  --no-install-recommends \
       babeltrace \
       libasio-dev \
       libacl1-dev \

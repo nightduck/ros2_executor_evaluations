@@ -40,7 +40,8 @@ This will prompt you to reboot your Pi. Do so.
 On a more powerful machine, build the docker image for the Raspberry Pi. Then export it to the Pi
 
     git clone --recursive git@github.com:nightduck/rtss2024_paper.git
-    docker buildx build -t rpi_image --platform linux/arm64 .
+    sudo apt install -y qemu-user-static binfmt-support
+    docker buildx build -t rpi_image --platform linux/arm64v8 .
     docker save -o rpi_image.tar rpi_image
     scp rpi_image.tar pi@pi_hostname:.
 
