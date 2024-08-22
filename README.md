@@ -39,30 +39,24 @@ This will prompt you to reboot your Pi. Do so. After lauching, run
 
     ./build.sh
 
-This will take several minutes (because I was too lazy to setup a cross compilation script lol)
+This will take several minutes (because cross compilation for ROS2 requires arm64 emulation which
+is ironically slower than just compiling on the Pi itself).
 
 # Experiments
 
-In one terminal run
+There are 4 experiments to run in this repository. To run the first 3, execute:
 
-    # terminal 1
-    cd ~/rtss2024_paper
     source install/setup.bash
-    ros2 trace --session-name test --list
+    sudo ./timers_only_benchmark_uniprocessor.sh    # Timers only experiment
+    sudo ./sequences_benchmark_uniprocessor.sh      # Chain sequences experiment
+    ./autoware_benchmark.sh                         # Autoware benchmark
 
-In a second terminal, run
+All the produced data will be stored in the `data` directory. Copy this directory to your local
+machine to run the Jupyter notebook, `process_evaluation_data.ipynb`.
 
-    # terminal 2
-    cd ~/rtss2024_paper
-    source install/setup.bash
-    cd install/lib/rtss_evaluation
-    sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./timers_only rm
-
-TODO: Modify above to run a script iterating through all CLI options, outputing contents to log file. Modify callback_duration.ipynb in tracetools analysis to take in the tracing log and this output file to generate all the diagrams.
-
-TODO: In ubuntu 24.04, cannot use pip for system wide installation. Have to create a venv, by
-installing python3.12-venv. Possibly use a separate setup script just for the jupyter notebook
-that sets this up. Also need ipykernel and pandas
+With the default times, these three commands will take a few minutes to run. For extended times,
+like found in the paper, edit the `duration` variable in each script to a higher value (we used 600
+in the paper). This will take several hours.
 
 ## FAQ
 
