@@ -6,4 +6,4 @@ venv/
 .venv/
 
 timers-only-*
-data/
+data*/
