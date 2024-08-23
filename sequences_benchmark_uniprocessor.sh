@@ -17,11 +17,11 @@ source install/setup.bash
 
 
 ros2 trace start trace-sequences.rm.uu
-chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/sequences $duration rm | tee trace-sequences.rm.ro.uu.log
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/sequences $duration rm | tee trace-sequences.rm.uu.log
 ros2 trace stop trace-sequences.rm.uu
 
 ros2 trace start trace-sequences.events.uu
-chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/sequences $duration events | tee trace-sequences.events.ro.uu.log
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/sequences $duration events | tee trace-sequences.events.uu.log
 ros2 trace stop trace-sequences.events.uu
 
 ros2 trace start trace-sequences.default.uu
@@ -29,11 +29,11 @@ chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/sequences $duration default
 ros2 trace stop trace-sequences.default.uu
 
 ros2 trace start trace-sequences.rm.hu
-chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/sequences_high_utilization $duration rm | tee trace-sequences.rm.ro.hu.log
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/sequences_high_utilization $duration rm | tee trace-sequences.rm.hu.log
 ros2 trace stop trace-sequences.rm.hu
 
 ros2 trace start trace-sequences.events.hu
-chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/sequences_high_utilization $duration events | tee trace-sequences.events.ro.hu.log
+chrt -f 50 taskset 0x8 ./install/lib/rtss_evaluation/sequences_high_utilization $duration events | tee trace-sequences.events.hu.log
 ros2 trace stop trace-sequences.events.hu
 
 ros2 trace start trace-sequences.default.hu

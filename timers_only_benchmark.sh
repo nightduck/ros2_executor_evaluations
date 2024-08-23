@@ -42,6 +42,7 @@ ros2 trace stop trace-timers-only.events.uu
 
 ros2 trace start -k sched_switch -l trace-timers-only.default
 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration | tee trace-timers-only.default.log
+ros2 trace stop trace-timers-only.default
 
 ros2 trace start -k sched_switch -l trace-timers-only.rm.uu
 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration rm | tee trace-timers-only.rm.uu.log

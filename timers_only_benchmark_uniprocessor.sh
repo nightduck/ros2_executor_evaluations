@@ -18,26 +18,26 @@ source /opt/ros/rolling/setup.bash
 source install/setup.bash
 
 ros2 trace start trace-timers-only.rm.$UU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration rm | tee trace-timers-only.rm.ro.$UU.log
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration rm | tee trace-timers-only.rm.$UU.log
 ros2 trace stop trace-timers-only.rm.$UU
 mkdir -p data/response_time.rm.$UU/
 mv *.node.txt data/response_time.rm.$UU/
 
 ros2 trace start trace-timers-only.edf.$UU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration edf | tee trace-timers-only.edf.ro.$UU.log
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration edf | tee trace-timers-only.edf.$UU.log
 ros2 trace stop trace-timers-only.edf.$UU
 mkdir -p data/response_time.edf.$UU/
 mv *.node.txt data/response_time.edf.$UU/
 
 # ros2 trace start trace-timers-only.fifo.$UU
-# taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration fifo | tee trace-timers-only.fifo.ro.$UU.log
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration fifo | tee trace-timers-only.fifo.$UU.log
 # ros2 trace stop trace-timers-only.fifo.$UU
 
-# ros2 trace start trace-timers-only.events.$UU
-# taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration events | tee trace-timers-only.events.ro.$UU.log
-# ros2 trace stop trace-timers-only.events.$UU
-# mkdir -p data/response_time.events.$UU/
-# mv *.node.txt data/response_time.events.$UU/
+ros2 trace start trace-timers-only.events.$UU
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration events | tee trace-timers-only.events.$UU.log
+ros2 trace stop trace-timers-only.events.$UU
+mkdir -p data/response_time.events.$UU/
+mv *.node.txt data/response_time.events.$UU/
 
 ros2 trace start trace-timers-only.static.$UU
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only $duration static | tee trace-timers-only.static.$UU.log
@@ -52,36 +52,26 @@ mkdir -p data/response_time.default.$UU/
 mv *.node.txt data/response_time.default.$UU/
 
 ros2 trace start trace-timers-only.rm.ro.$HU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration rm ro | tee trace-timers-only.rm.ro.$HU.log
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration rm ro | tee trace-timers-only.rm.$HU.log
 ros2 trace stop trace-timers-only.rm.ro.$HU
 mkdir -p data/response_time.rm.ro.$HU/
 mv *.node.txt data/response_time.rm.ro.$HU/
 
 ros2 trace start trace-timers-only.edf.ro.$HU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration edf ro | tee trace-timers-only.edf.ro.$HU.log
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration edf ro | tee trace-timers-only.edf.$HU.log
 ros2 trace stop trace-timers-only.edf.ro.$HU
 mkdir -p data/response_time.edf.ro.$HU/
 mv *.node.txt data/response_time.edf.ro.$HU/
 
 # ros2 trace start trace-timers-only.fifo.ro.$HU
-# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration fifo ro | tee trace-timers-only.fifo.ro.$HU.log
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration fifo ro | tee trace-timers-only.fifo.$HU.log
 # ros2 trace stop trace-timers-only.fifo.ro.$HU
 
-# ros2 trace start trace-timers-only.fifo.re.$HU
-# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration fifo re | tee trace-timers-only.fifo.re.$HU.log
-# ros2 trace stop trace-timers-only.fifo.re.$HU
-
 ros2 trace start trace-timers-only.events.ro.$HU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration events ro | tee trace-timers-only.events.ro.$HU.log
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration events ro | tee trace-timers-only.events.$HU.log
 ros2 trace stop trace-timers-only.events.ro.$HU
 mkdir -p data/response_time.events.ro.$HU/
 mv *.node.txt data/response_time.events.ro.$HU/
-
-# ros2 trace start trace-timers-only.events.re.$HU
-# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration events re | tee trace-timers-only.events.re.$HU.log
-# ros2 trace stop trace-timers-only.events.re.$HU
-# mkdir -p data/response_time.events.re.$HU/
-# mv *.node.txt data/response_time.events.re.$HU/
 
 ros2 trace start trace-timers-only.static.$HU
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration static | tee trace-timers-only.static.$HU.log
@@ -96,23 +86,23 @@ mkdir -p data/response_time.default.$HU/
 mv *.node.txt data/response_time.default.$HU/
 
 ros2 trace start trace-timers-only.rm.$OU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration rm | tee trace-timers-only.rm.ro.$OU.log
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration rm | tee trace-timers-only.rm.$OU.log
 ros2 trace stop trace-timers-only.rm.$OU
 mkdir -p data/response_time.rm.$OU/
 mv *.node.txt data/response_time.rm.$OU/
 
 ros2 trace start trace-timers-only.edf.$OU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration edf | tee trace-timers-only.edf.ro.$OU.log
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration edf | tee trace-timers-only.edf.$OU.log
 ros2 trace stop trace-timers-only.edf.$OU
 mkdir -p data/response_time.edf.$OU/
 mv *.node.txt data/response_time.edf.$OU/
 
 # ros2 trace start trace-timers-only.fifo.$OU
-# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration fifo | tee trace-timers-only.fifo.ro.$OU.log
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration fifo | tee trace-timers-only.fifo.$OU.log
 # ros2 trace stop trace-timers-only.fifo.$OU
 
 ros2 trace start trace-timers-only.events.$OU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration events | tee trace-timers-only.events.ro.$OU.log
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_over_utilization $duration events | tee trace-timers-only.events.$OU.log
 ros2 trace stop trace-timers-only.events.$OU
 mkdir -p data/response_time.events.$OU/
 mv *.node.txt data/response_time.events.$OU/
