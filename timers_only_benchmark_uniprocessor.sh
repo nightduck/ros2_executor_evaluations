@@ -51,27 +51,27 @@ ros2 trace stop trace-timers-only.default.$UU
 mkdir -p data/response_time.default.$UU/
 mv *.node.txt data/response_time.default.$UU/
 
-ros2 trace start trace-timers-only.rm.ro.$HU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration rm ro | tee trace-timers-only.rm.$HU.log
-ros2 trace stop trace-timers-only.rm.ro.$HU
-mkdir -p data/response_time.rm.ro.$HU/
-mv *.node.txt data/response_time.rm.ro.$HU/
+ros2 trace start trace-timers-only.rm.$HU
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration rm | tee trace-timers-only.rm.$HU.log
+ros2 trace stop trace-timers-only.rm.$HU
+mkdir -p data/response_time.rm.$HU/
+mv *.node.txt data/response_time.rm.$HU/
 
-ros2 trace start trace-timers-only.edf.ro.$HU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration edf ro | tee trace-timers-only.edf.$HU.log
-ros2 trace stop trace-timers-only.edf.ro.$HU
-mkdir -p data/response_time.edf.ro.$HU/
-mv *.node.txt data/response_time.edf.ro.$HU/
+ros2 trace start trace-timers-only.edf.$HU
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration edf | tee trace-timers-only.edf.$HU.log
+ros2 trace stop trace-timers-only.edf.$HU
+mkdir -p data/response_time.edf.$HU/
+mv *.node.txt data/response_time.edf.$HU/
 
-# ros2 trace start trace-timers-only.fifo.ro.$HU
-# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration fifo ro | tee trace-timers-only.fifo.$HU.log
-# ros2 trace stop trace-timers-only.fifo.ro.$HU
+# ros2 trace start trace-timers-only.fifo.$HU
+# taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration fifo | tee trace-timers-only.fifo.$HU.log
+# ros2 trace stop trace-timers-only.fifo.$HU
 
-ros2 trace start trace-timers-only.events.ro.$HU
-taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration events ro | tee trace-timers-only.events.$HU.log
-ros2 trace stop trace-timers-only.events.ro.$HU
-mkdir -p data/response_time.events.ro.$HU/
-mv *.node.txt data/response_time.events.ro.$HU/
+ros2 trace start trace-timers-only.events.$HU
+taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration events | tee trace-timers-only.events.$HU.log
+ros2 trace stop trace-timers-only.events.$HU
+mkdir -p data/response_time.events.$HU/
+mv *.node.txt data/response_time.events.$HU/
 
 ros2 trace start trace-timers-only.static.$HU
 taskset 0x8 ./install/lib/rtss_evaluation/timers_only_high_utilization $duration static | tee trace-timers-only.static.$HU.log
