@@ -73,20 +73,20 @@ mv *.node.txt data/response_time.edf.$OU/
 ros2 trace start trace-many-to-many.rm.$OU
 taskset 0x8 ./install/lib/paper_evaluation/many_to_many_pub $duration rm | tee trace-many-to-many.rm.$OU.log
 ros2 trace stop trace-many-to-many.rm.$OU
-mkdir -p data/response_time.edf.$OU/
-mv *.node.txt data/response_time.edf.$OU/
+mkdir -p data/response_time.rm.$OU/
+mv *.node.txt data/response_time.rm.$OU/
 
 ros2 trace start trace-many-to-many.events.$OU
 taskset 0x8 ./install/lib/paper_evaluation/many_to_many_pub $duration events | tee trace-many-to-many.events.$OU.log
 ros2 trace stop trace-many-to-many.events.$OU
-mkdir -p data/response_time.edf.$OU/
-mv *.node.txt data/response_time.edf.$OU/
+mkdir -p data/response_time.events.$OU/
+mv *.node.txt data/response_time.events.$OU/
 
 ros2 trace start trace-many-to-many.default.$OU
 taskset 0x8 ./install/lib/paper_evaluation/many_to_many_pub $duration default | tee trace-many-to-many.default.$OU.log
 ros2 trace stop trace-many-to-many.default.$OU
-mkdir -p data/response_time.edf.$OU/
-mv *.node.txt data/response_time.edf.$OU/
+mkdir -p data/response_time.default.$OU/
+mv *.node.txt data/response_time.default.$OU/
 
 cp -r ~/.ros/tracing/trace-many-to-many.* ./data/
 mv trace-many-to-many* ./data/
