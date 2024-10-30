@@ -8,8 +8,8 @@ fi
 
 duration=10
 
-UU=60
-HU=80
+UU=50
+HU=70
 OU=90
 
 rm -r ~/.ros/tracing/trace-many-to-many.*
