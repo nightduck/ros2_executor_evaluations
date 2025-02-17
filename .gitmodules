@@ -10,3 +10,6 @@
 	path = src/ros2/ros2-end-to-end
 	url = https://github.com/HarunTeper/ros2-end-to-end.git
 	branch = main
+[submodule "src/ros2/rcl"]
+	path = src/ros2/rcl
+	url = https://github.com/ros2/rcl.git
