@@ -1,12 +1,12 @@
 [submodule "src/ros2/rclcpp"]
 	path = src/ros2/rclcpp
-	url = git@github.com:nightduck/rclcpp.git
+	url = https://github.com/nightduck/rclcpp.git
 	branch = rtas2025_ae
 [submodule "src/ros2/reference-system"]
 	path = src/ros2/reference-system
-	url = git@github.com:nightduck/reference-system.git
+	url = https://github.com/nightduck/reference-system.git
 	branch = main
 [submodule "src/ros2/ros2-end-to-end"]
 	path = src/ros2/ros2-end-to-end
-	url = git@github.com:HarunTeper/ros2-end-to-end.git
+	url = https://github.com/HarunTeper/ros2-end-to-end.git
 	branch = main
