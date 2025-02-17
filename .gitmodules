@@ -1,7 +1,7 @@
 [submodule "src/ros2/rclcpp"]
 	path = src/ros2/rclcpp
 	url = git@github.com:nightduck/rclcpp.git
-	branch = graph_executables
+	branch = rtas2025_ae
 [submodule "src/ros2/reference-system"]
 	path = src/ros2/reference-system
 	url = git@github.com:nightduck/reference-system.git
