@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-vcs import < src/ros2.repos src
+# vcs import < src/ros2.repos src
 sudo apt-get update
 sudo apt install -y \
   babeltrace \
@@ -29,7 +29,7 @@ sudo apt install -y \
   ros-rolling-ros2trace \
   ros-rolling-tracetools-analysis
 
-pip3 install bokeh==2.4.3 psrecord
+pip3 install bokeh==2.4.3 psrecord seaborn
 #sudo RTI_NC_LICENSE_ACCEPTED=yes apt-get install rti-connext-dds-6.0.1 -y
 rosdep update --rosdistro=$ROS_DISTRO
 rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO
