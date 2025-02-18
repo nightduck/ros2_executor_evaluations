@@ -15,7 +15,7 @@ if [ $# -eq 1 ]; then
 fi
 
 python3 $(ros2 pkg prefix --share autoware_reference_system)/scripts/benchmark.py $duration \
-        autoware_default_singlethreaded,autoware_default_events,autoware_default_rm,autoware_default_edf
+        autoware_default_singlethreaded,autoware_default_events,autoware_default_rm,autoware_default_staticsinglethreaded
 
 mkdir -p data/autoware_benchmark
 cp -r ~/.ros/benchmark_autoware_reference_system/latest/* data/autoware_benchmark/
