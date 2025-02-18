@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default value for the benchmark duration
-duration=10
+duration=300
 
 # Check if a command line argument is provided
 if [ $# -eq 1 ]; then

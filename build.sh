@@ -5,7 +5,7 @@ set -e
 BUILD_TYPE=RelWithDebInfo
 
 # Build with only one worker, otherwise the Pi will run out of memory
-# export MAKEFLAGS="-j2"
+export MAKEFLAGS="-j1"
 colcon build \
         --merge-install \
         --symlink-install \
