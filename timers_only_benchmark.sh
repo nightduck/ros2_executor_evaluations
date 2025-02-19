@@ -1,8 +1,7 @@
 #!/bin/bash
 if [[ $EUID -ne 0 ]]; then
    echo "Script needs root, please run: "
-   echo "sudo env PATH=\"\$PATH\" LD_LIBRARY_PATH=\"\$LD_LIBRARY_PATH\" !! "
-   # sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./timers_only_benchmark_uniprocessor.sh
+   echo "sudo !! "
    exit 1
 fi
 
