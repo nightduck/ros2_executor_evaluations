@@ -3,18 +3,13 @@
 # Default value for the benchmark duration
 duration=300
 
-# Check if a command line argument is provided
-if [ $# -eq 1 ]; then
-  # Validate the input argument as an integer
-  if [[ $1 =~ ^[0-9]+$ ]]; then
-    duration=$1
-  else
-    echo "Invalid input. Usage: $0 [duration]"
-    exit 1
-  fi
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+   echo "Script needs root, please run: "
+   echo "sudo !! "
+   exit 1
 fi
 
-source venv/bin/activate
 source /opt/ros/rolling/setup.bash
 source install/setup.bash
 

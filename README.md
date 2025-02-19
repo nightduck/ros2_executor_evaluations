@@ -24,10 +24,10 @@ Clone the repository with
 Install any remaining dependencies with
 
 		cd ros2_executor_evaluations
-		source /opt/ros/rolling/setup.bash
 		./setup.sh
 
-It may prompt you for your password.
+It may prompt you for your password. Afterwards, close and reopen the terminal so the environmental
+changes can take effect.
 
 You then need to build the system. It must be built on the Pi because ROS2 doesn't support cross
 compilation. Note that because it is being built on the Pi, the following command will take 3 hours.
@@ -46,12 +46,11 @@ for 5 minutes by default, taking 1-2 hours total. To run abbreviated (or longer)
 scripts can be editted. They each have a variable called `duration` that is set to 300 seconds by
 default. Revise that as needed. Then execute the following
 
-		sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./timers_only_benchmark.sh
-		./autoware_benchmark.sh
+		sudo -E ./timers_only_benchmark.sh
+		sudo -E ./autoware_benchmark.sh
 
 After running the experiments, run the data processing scripts to generate graphs. (Source the venv)
 
-		source venv/bin/activate
 		python3 process_evaluation_data.py
 
 The figures will be in the `figures/` filter
