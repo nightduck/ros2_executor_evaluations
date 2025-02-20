@@ -11,8 +11,9 @@ HU=80
 OU=90
 
 mkdir -p data
-rm -r data/*
-rm -r ~/.ros/tracing/trace-timers-only.*
+rm -rf data/response_time.*
+rm -rf data/trace-timers-only.*
+rm -rf ~/.ros/tracing/trace-timers-only.*
 source /opt/ros/rolling/setup.bash
 source install/setup.bash
 

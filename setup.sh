@@ -29,7 +29,14 @@ sudo apt install -y \
   ros-rolling-ros2trace \
   ros-rolling-tracetools-analysis
 
-pip3 install numpy==1.21.5 pandas==1.3.5 matplotlib==3.5.1 seaborn bokeh==2.4.3 psrecord==1.2
+pip3 install \
+  numpy==1.21.5 \
+  pandas==1.3.5 \
+  matpipplotlib==3.5.1 \
+  seaborn \
+  bokeh==2.4.3 \
+  psrecord==1.2 \
+  pillow==9.0.1
 #sudo RTI_NC_LICENSE_ACCEPTED=yes apt-get install rti-connext-dds-6.0.1 -y
 
 if [ -z "$ROS_DISTRO" ]; then
@@ -37,5 +44,6 @@ if [ -z "$ROS_DISTRO" ]; then
   echo "source /opt/ros/rolling/setup.bash" >> ~/.bashrc
 fi
 
+sudo rosdep init
 rosdep update --rosdistro=$ROS_DISTRO
 rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO

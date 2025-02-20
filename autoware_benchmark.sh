@@ -10,6 +10,8 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+mkdir -p data
+rm -rf data/autoware_benchmark
 source /opt/ros/rolling/setup.bash
 source install/setup.bash
 
