@@ -1,132 +1,169 @@
-# Development Setup
+# RTAS 2025 Artifact Evaluation
 
-If you want to develop in this repository, it has been setup for Docker+VSCode integration. You should already have Docker and VSCode with the remote containers plugin installed on your system.
+This branch and it's submodules contain code for the artifact evaluation of our RTAS 2025
+submission. Instructions to replicate our results follow.
 
-* [docker](https://docs.docker.com/engine/install/)
-* [vscode](https://code.visualstudio.com/)
-* [vscode remote containers plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+## Setup
 
+You will need to setup your own test system using a Raspberry Pi Model 4B with 4GB
+of RAM.
 
-When you open it for the first time, you should see a little popup that asks you if you would like to open it in a container.  Say yes!
+It must be running Ubuntu 20.04. This can be created using the 
+[Raspberry Pi Imager](https://www.raspberrypi.com/software/). When selecting the OS, select
+"Other General Purpose OS > Ubuntu > Ubuntu Server 20.04.5 LTS (64-bit)"
 
-![template_vscode](https://user-images.githubusercontent.com/6098197/91332551-36898100-e781-11ea-9080-729964373719.png)
+You must install ROS2 Rolling on the Pi. Following the instructions [here](https://docs.ros.org/en/rolling/Installation/Ubuntu-Install-Debs.html).
 
-If you don't see the pop-up, click on the little green square in the bottom left corner, which should bring up the container dialog
+We need to set a constant CPU frequency. Do so with the following
 
-![template_vscode_bottom](https://user-images.githubusercontent.com/6098197/91332638-5d47b780-e781-11ea-9fb6-4d134dbfc464.png)
-
-In the dialog, select "Remote Containers: Reopen in container"
-
-VSCode will build the dockerfile inside of `.devcontainer` for you.  If you open a terminal inside VSCode (Terminal->New Terminal), you should see that your username has been changed to `ros`, and the bottom left green corner should say "Dev Container"
-
-![template_container](https://user-images.githubusercontent.com/6098197/91332895-adbf1500-e781-11ea-8afc-7a22a5340d4a.png)
-
-Finally, you should setup your environment. Do this with Ctrl+Shift+P, "Run Task", and "Setup". This will run the `setup.sh` script, which installs dependencies and downloads all submodules.
-
-# Setup for Experiments
-
-To recreate the experiments in the paper, clone this repository onto a Raspberry Pi Model 4B with
-
-    git clone --recursive git@github.com:nightduck/rtss2024_paper.git
-
-Configure your Pi with the following
-
-    cd reference-system
+    # Enter a root shell
     sudo su
-    configure_pi.sh
 
-This will prompt you to reboot your Pi. Do so. After lauching, run
+    systemctl disable ondemand
+    echo performance | tee \
+      /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor >/dev/null
+    echo 1500000 | tee \
+      /sys/devices/system/cpu/cpu*/cpufreq/scaling_min_freq >/dev/null
+    echo 1500000 | tee \
+      /sys/devices/system/cpu/cpu*/cpufreq/scaling_max_freq >/dev/null
+    echo 1 | tee /sys/devices/system/cpu/cpu*/cpufreq/stats/reset >/dev/null
+
+`Ctrl+D` to exit out of the root shell.
+
+Clone the repository with
+
+    git clone --recursive https://github.com/nightduck/ros2_executor_evaluations.git -b rtas2025_ae
+
+Install any remaining dependencies with
+
+    cd ros2_executor_evaluations
+    ./setup.sh
+
+It may prompt you for your password. Afterwards, close and reopen the terminal so the environmental
+changes can take effect.
+
+You then need to build the system. It must be built on the Pi because ROS2 doesn't support cross
+compilation. Note that because it is being built on the Pi, the following command will take 3 hours.
+Feel free to run it in a screen terminal
 
     ./build.sh
 
-This will take several minutes (because cross compilation for ROS2 requires arm64 emulation which
-is ironically slower than just compiling on the Pi itself).
+## Run Experiments
 
-# Experiments
-
-There are 4 experiments to run in this repository. To run the first 3, execute:
+After building, source the install.
 
     source install/setup.bash
-    sudo ./timers_only_benchmark_uniprocessor.sh    # Timers only experiment
-    sudo ./sequences_benchmark_uniprocessor.sh      # Chain sequences experiment
-    ./autoware_benchmark.sh                         # Autoware benchmark
 
-All the produced data will be stored in the `data` directory. Copy this directory to your local
-machine to run the Jupyter notebook, `process_evaluation_data.ipynb`.
+This has to be done after opening each new terminal. To source automatically, you can add this command to your `~/.bashrc` file.
 
-With the default times, these three commands will take a few minutes to run. For extended times,
-like found in the paper, edit the `duration` variable in each script to a higher value (we used 600
-in the paper). This will take several hours.
+    echo "source path/to/ros2_executor_evaluations/install/setup.bash" >> ~/.bashrc
 
-## FAQ
+Then you can run the experiments. Each of the scripts below has several tests to run, and runs each
+for 5 minutes by default, taking 1-2 hours total. To run abbreviated (or longer) tests, these
+scripts can be editted. They each have a variable called `duration` that is set to 300 seconds by
+default. Revise that as needed. Then execute the following
 
-### WSL2
+    sudo -E ./timers_only_benchmark.sh
+    sudo -E ./autoware_benchmark.sh
 
-#### The gui doesn't show up
+## Simplified Experiments
 
-This is likely because the DISPLAY environment variable is not getting set properly.
+The provided scripts run for ~100 minutes. For a shorter run, edit the `duration` variable in both `timers_only_benchmark.sh` and `autoware_benchmark.sh`. It is set to 300 seconds by default, edit to a lower value, such as 5. Then run the some the same scripts
 
-1. Find out what your DISPLAY variable should be
+    source install/setup.bash
+    sudo -E ./timers_only_benchmark.sh
+    sudo -E ./autoware_benchmark.sh
 
-      In your WSL2 Ubuntu instance
+## View Data
 
-      ```
-      echo $DISPLAY
-      ```
+After running the experiments, run the data processing scripts to generate graphs. (Source the venv)
 
-2. Copy that value into the `.devcontainer/devcontainer.json` file
+    python3 process_evaluation_data.py
 
-      ```jsonc
-      	"containerEnv": {
-		      "DISPLAY": ":0",
-         }
-      ```
+The figures will be in the `figures/` folder. scp them off of the machine for viewing. These will correspond to Figs 3,4,5, and 8, plus some additional figures that weren't included in the figure.
 
-#### I want to use vGPU
 
-If you want to access the vGPU through WSL2, you'll need to add additional components to the `.devcontainer/devcontainer.json` file in accordance to [these directions](https://github.com/microsoft/wslg/blob/main/samples/container/Containers.md)
+# Evaluation for Section VIII.B
 
-```jsonc
-	"runArgs": [
-		"--network=host",
-		"--cap-add=SYS_PTRACE",
-		"--security-opt=seccomp:unconfined",
-		"--security-opt=apparmor:unconfined",
-		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
-		"--volume=/mnt/wslg:/mnt/wslg",
-		"--volume=/usr/lib/wsl:/usr/lib/wsl",
-		"--device=/dev/dxg",
-      		"--gpus=all"
-	],
-	"containerEnv": {
-		"DISPLAY": "${localEnv:DISPLAY}", // Needed for GUI try ":0" for windows
-		"WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}",
-		"XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
-		"PULSE_SERVER": "${localEnv:PULSE_SERVER}",
-		"LD_LIBRARY_PATH": "/usr/lib/wsl/lib",
-		"LIBGL_ALWAYS_SOFTWARE": "1" // Needed for software rendering of opengl
-	},
+Below instructions for evaluating the artifact associated with our paper on comparing end-to-end latencies in ROS 2 scheduling.
+
+## System Requirements
+
+- **Operating System**: Linux (Ubuntu 20.04 or later recommended)
+- **RAM**: Minimum 8 GB
+- **CPU**: Minimum 4 cores
+- **Disk Space**: Minimum 10 GB free space
+- **Docker**: Ensure Docker is installed and running
+- **VS Code**: Ensure Visual Studio Code is installed with the Remote - Containers extension
+
+## Packaged Artifact
+
+The artifact is packaged as a Docker container. You can find the Dockerfile and configuration files in the `.devcontainer` directory.
+
+## Setup Instructions
+
+### Using the Packaged Artifact
+
+1. **Clone the Repository**:
+
+    ```sh
+    git clone https://github.com/tu-dortmund-ls12-rt/Periodic-ROS2.git
+    cd Periodic-ROS2
+    ```
+
+2. **Open in VS Code**:
+    Open the repository in Visual Studio Code. You should see a prompt to reopen the folder in a container. Click on "Reopen in Container".
+
+3. **Build and Run the Container**:
+    The container will automatically build and set up the environment. This may take a few minutes.
+
+4. **Run the Evaluation**:
+    Once the container is ready, open a terminal in VS Code and run:
+
+    ```sh
+    python3 evaluation.py --num_task_sets 1000
+    ```
+
+### Setting Up on a Different Machine
+
+If you prefer to set up the artifact on a different machine without using the Docker container, follow these steps:
+
+1. **Install Dependencies**:
+    Ensure you have Python 3, pip, and the required libraries installed:
+
+    ```sh
+    sudo apt-get update
+    sudo apt-get install -y python3-pip
+    pip3 install matplotlib tabulate scipy
+    ```
+
+2. **Clone the Repository**:
+
+    ```sh
+    git clone https://github.com/tu-dortmund-ls12-rt/Periodic-ROS2.git
+    cd Periodic-ROS2
+    ```
+
+3. **Run the Evaluation**:
+
+    ```sh
+    python3 evaluation.py --num_task_sets 1000
+    ```
+
+## Reproducing Results
+
+The evaluation script will reproduce the results presented in the paper. Specifically, it will generate synthetic task sets, calculate response times and end-to-end latencies, and produce visualizations similar to those in the paper. Depending on the hardware, the evaluation may take up to 10 minutes to complete. During the scripts, new windows with plots will be opened. Close these windows to continue the evaluation, until the script finishes.
+
+### Figures and Outputs
+
+- **evaluation_plot.png**: Histograms of normalized reduction in end-to-end latency.
+- **Terminal**: Statistical values of RM and ROS 2 default end-to-end latencies.
+
+## Simplified Experiments
+
+For a quicker evaluation, you can reduce the number of task sets generated by passing a smaller value to the `--num_task_sets` parameter when running the `evaluation.py` script. By default, the script generates 1000 task sets. You can reduce this number to 100 or 10 to speed up the evaluation.
+
+```sh
+# Change the number of task sets from 1000 to a smaller number, e.g., 100
+python3 evaluation.py --num_task_sets 100
 ```
-
-### Repos are not showing up in VS Code source control
-
-This is likely because vscode doesn't necessarily know about other repositories unless you've added them directly. 
-
-```
-File->Add Folder To Workspace
-```
-
-![Screenshot-26](https://github.com/athackst/vscode_ros2_workspace/assets/6098197/d8711320-2c16-463b-9d67-5bd9314acc7f)
-
-
-Or you've added them as a git submodule.
-
-![Screenshot-27](https://github.com/athackst/vscode_ros2_workspace/assets/6098197/8ebc9aac-9d70-4b53-aa52-9b5b108dc935)
-
-To add all of the repos in your *.repos file, run the script
-
-```bash
-python3 .devcontainer/repos_to_submodules.py
-```
-
-or run the task titled `add submodules from .repos`
