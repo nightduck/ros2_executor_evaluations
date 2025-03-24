@@ -7,15 +7,15 @@ sudo apt install -y \
   babeltrace \
   libasio-dev \
   libacl1-dev \
-  libfastcdr-dev \
+  # libfastcdr-dev \
   less \
   python3-pip \
   python3-pytest-cov \
-  python3-flake8-blind-except \
-  python3-flake8-class-newline \
-  python3-flake8-deprecated \
-  python3-pytest-repeat \
-  python3-pytest-rerunfailures \
+  # python3-flake8-blind-except \
+  # python3-flake8-class-newline \
+  # python3-flake8-deprecated \
+  # python3-pytest-repeat \
+  # python3-pytest-rerunfailures \
   \
   ros-dev-tools \
   ros-rolling-test-msgs \
@@ -32,7 +32,7 @@ sudo apt install -y \
 pip3 install \
   numpy==1.21.5 \
   pandas==1.3.5 \
-  matpipplotlib==3.5.1 \
+  matplotlib==3.5.1 \
   seaborn \
   bokeh==2.4.3 \
   psrecord==1.2 \
