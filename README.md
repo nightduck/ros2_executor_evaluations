@@ -104,15 +104,8 @@ The artifact is packaged as a Docker container. You can find the Dockerfile and 
 
 ### Using the Packaged Artifact
 
-1. **Clone the Repository**:
-
-    ```sh
-    git clone https://github.com/tu-dortmund-ls12-rt/Periodic-ROS2.git
-    cd Periodic-ROS2
-    ```
-
-2. **Open in VS Code**:
-    Open the repository in Visual Studio Code. You should see a prompt to reopen the folder in a container. Click on "Reopen in Container".
+1. **Open in VS Code**:
+    Open the folder `src/Periodic-ROS2` in Visual Studio Code. You should see a prompt to reopen the folder in a container. Click on "Reopen in Container".
 
 3. **Build and Run the Container**:
     The container will automatically build and set up the environment. This may take a few minutes.
@@ -137,11 +130,10 @@ If you prefer to set up the artifact on a different machine without using the Do
     pip3 install matplotlib tabulate scipy
     ```
 
-2. **Clone the Repository**:
+2. **Open the repository**:
 
     ```sh
-    git clone https://github.com/tu-dortmund-ls12-rt/Periodic-ROS2.git
-    cd Periodic-ROS2
+    cd src/Periodic-ROS2
     ```
 
 3. **Run the Evaluation**:

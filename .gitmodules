@@ -13,3 +13,6 @@
 [submodule "src/ros2/rcl"]
 	path = src/ros2/rcl
 	url = https://github.com/ros2/rcl.git
+[submodule "src/Periodic-ROS2"]
+	path = src/Periodic-ROS2
+	url = git@github.com:HarunTeper/Periodic-ROS2.git

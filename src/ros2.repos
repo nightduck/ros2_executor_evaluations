@@ -28,3 +28,7 @@ repositories:
     type: git
     url: git@github.com:ros2/rcl.git
     version: rolling
+  Periodic-ROS2:
+    type: git
+    url: git@github.com:HarunTeper/Periodic-ROS2.git
+    version: main
